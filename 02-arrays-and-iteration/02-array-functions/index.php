@@ -52,10 +52,10 @@ $tagsArray = explode(',', $tags);
 // var_dump($tagsArray);
 
 // in_array
-$output = 'User3 exists: ' . in_array('user3', $users);
+// $output = 'User3 exists: ' . in_array('user3', $users);
 
 // implode - convert array to string
-$output = implode(' - ', $users);
+// $output = implode(' - ', $users);
 
 
 

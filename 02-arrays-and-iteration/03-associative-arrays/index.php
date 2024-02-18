@@ -1,5 +1,22 @@
 <?php
 $output = null;
+
+$users = [
+    'username' => 'TahirUddinAhmed',
+    'email' => '01tahirahmed@.com',
+    'password' => 'pwd@123',
+    'hobbies' => ['Tennis', 'Books']
+];
+
+ $output = $users['username'];
+
+//  nested elementss 
+ $output = $users['hobbies'][1];
+
+//  add elements
+$users['address'] = '782105, Morigoan, Assam';
+
+unset($users['address']);
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +39,13 @@ $output = null;
         <div class="bg-white rounded-lg shadow-md p-6 mt-6">
             <!-- Output -->
             <p class="text-xl"><?= $output ?></p>
+            <h2 class="text-xl font-semibold my-4">User Array:</h2>
+
+            <p>
+                <pre>
+                    <?php print_r($users) ?>
+                </pre>
+            </p>
         </div>
     </div>
 </body>
