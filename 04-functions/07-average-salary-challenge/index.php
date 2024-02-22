@@ -61,10 +61,24 @@ function calculateAverageSalary($jobLitings) {
     $total += $salaries;
   }
 
-  return $total / count($jobLitings);
+  // return $total / count($jobLitings);
+  $averageSalary = (count($jobLitings) > 0) ? $total / count($jobLitings) : 0;
+
+  return formatSalary($averageSalary);
 }
 
-$averageSalary = calculateAverageSalary($listings);
+function calculateAverageSalary2($jobLitings) {
+  $salaries = array_column($jobLitings, 'salary');
+  $total = array_sum($salaries);
+  $count = count($jobLitings);
+
+  $averageSalary = ($count > 0) ? $total / $count : 0;
+  
+  return formatSalary($averageSalary);
+
+}
+
+$averageSalary = calculateAverageSalary2($listings);
 ?>
 
 
@@ -86,7 +100,7 @@ $averageSalary = calculateAverageSalary($listings);
   </header>
   <div class="container mx-auto p-4 mt-4">
     <div class="bg-green-100 rounded-lg shadow-md p-6 my-6">
-      <h2 class="text-2xl font-semibold mb-4">Average Salary: <?= formatSalary($averageSalary) ?></h2>
+      <h2 class="text-2xl font-semibold mb-4">Average Salary: <?= $averageSalary ?></h2>
     </div>
     <!-- Output -->
     <?php foreach ($listings as $index => $job) : ?>
