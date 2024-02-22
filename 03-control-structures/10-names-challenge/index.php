@@ -15,6 +15,6 @@ foreach ($names as $index => $name) {
     if($name[0] == 'A') {
         continue;
     } else {
-        echo strtolower($name) . "<br>";
+        echo strtolower(strrev($name)) . "<br>";
     }
 }
