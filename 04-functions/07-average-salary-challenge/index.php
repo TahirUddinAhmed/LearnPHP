@@ -54,14 +54,14 @@ function highlightTags($tags, $searchTerm)
 }
 
 function calculateAverageSalary($jobLitings) {
-  $average = 0;
-  foreach($jobLitings as $index => $job) {
+  $total = 0;
+  foreach($jobLitings as $job) {
     $salaries = $job['salary'];
 
-    $average += $salaries;
+    $total += $salaries;
   }
 
-  return $average / count($jobLitings);
+  return $total / count($jobLitings);
 }
 
 $averageSalary = calculateAverageSalary($listings);
