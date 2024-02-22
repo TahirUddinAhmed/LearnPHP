@@ -1,3 +1,8 @@
+<?php
+$isLoggedIn = true;
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +22,15 @@
   <div class="container mx-auto p-4 mt-4">
     <div class="bg-white rounded-lg shadow-md p-6 mt-6">
       <!-- Output -->
-      <h1 class="text-3xl">Welcome</h1>
+      <?php if($isLoggedIn) : ?>
+      <h1 class="text-3xl">
+        Welcome to the App
+      </h1>
+      <?php else : ?>
+        <h1 class="text-3xl">
+          Please log in
+        </h1>
+      <?php endif ?>
     </div>
   </div>
 </body>
