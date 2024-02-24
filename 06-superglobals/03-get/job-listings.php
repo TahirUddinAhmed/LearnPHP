@@ -44,7 +44,7 @@ $listings = [
 
 function formatSalary($salary)
 {
-  return '$' . number_format($salary, 2);
+  return '₹' . number_format($salary, 2);
 }
 
 function highlightTags($tags, $searchTerm)
@@ -68,6 +68,40 @@ function calculateAverageSalary($listings)
 
   return formatSalary($averageSalary);
 }
+
+function filterListingByLocation($listings, $location) {
+  // return array_filter($listings, function ($job) use ($location) {
+  //   return strcasecmp($job['location'], $location) === 0;
+  // });
+  $filteredListing = [];
+
+  foreach($listings as $job) {
+    if(strcasecmp($job['location'], $location) === 0) {
+      $filteredListing[] = $job;
+    }
+  }
+
+  return $filteredListing;
+}
+
+// check if location query string is there
+if(isset($_GET['location'])) {
+  $location = $_GET['location'];
+
+  $filteredListings = filterListingByLocation($listings, $location);
+} else {
+  $filteredListings = $listings;
+}
+
+// if(isset($_GET['filter'])) {
+//   $location = $_GET['location'];
+
+//    $filteredListing = filterListingByLocation($listings, $location);
+// } else {
+//   $filteredListing = $listings;
+// }
+  
+
 ?>
 
 
@@ -88,11 +122,24 @@ function calculateAverageSalary($listings)
     </div>
   </header>
   <div class="container mx-auto p-4 mt-4">
+    <!-- <div class="container mx-auto mt-2">
+      <h2>Filter listing by Location</h2>
+      <form action="" method="GET" class="mt-2">
+        <select name="location" class="p-2">
+          <option value="default">Choose Location</option>
+          <?php foreach($listings as $job) : ?>
+              <option value="<?= $job['location'] ?>"><?= $job['location'] ?></option>
+          <?php endforeach; ?>
+        </select>
+
+        <input type="submit" name="filter" value="Filter" class="bg-blue-700 text-white p-2">
+      </form>
+    </div> -->
     <div class="bg-green-100 rounded-lg shadow-md p-6 my-6">
       <h2 class="text-2xl font-semibold mb-4">Average Salary: <?= calculateAverageSalary($listings)  ?></h2>
     </div>
     <!-- Output -->
-    <?php foreach ($listings as $index => $job) : ?>
+    <?php foreach ($filteredListings as $index => $job) : ?>
       <div class="md my-4">
         <div class="rounded-lg shadow-md <?= $index % 2 === 0 ? 'bg-blue-100' : 'bg-white'; ?>">
           <div class="p-4">
