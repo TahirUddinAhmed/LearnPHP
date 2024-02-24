@@ -1,22 +1,22 @@
 <?php
 // Common server variables:
-$requestMethod = '';
-$serverProtocol = '';
-$serverName = '';
-$serverPort = '';
-$serverSoftware = '';
-$serverAdmin = '';
-$documentRoot = '';
-$scriptFilename = '';
-$scriptName = '';
-$phpSelf = '';
-$remoteAddr = '';
-$connection = '';
-$host = '';
-$referer = '';
-$userAgent = '';
-$queryString = '';
-$requestUri = '';
+$requestMethod = $_SERVER['REQUEST_METHOD'] ?? '';
+$serverProtocol = $_SERVER['SERVER_PROTOCOL'] ?? '';
+$serverName = $_SERVER['SERVER_NAME'] ?? '';
+$serverPort = $_SERVER['SERVER_PORT'] ?? '';
+$serverSoftware = $_SERVER['SERVER_SOFTWARE'] ?? '';
+$serverAdmin = $_SERVER['SERVER_ADMIN'] ?? '';
+$documentRoot = $_SERVER['DOCUMENT_ROOT'] ?? '';
+$scriptFilename = $_SERVER['SCRIPT_FILENAME'] ?? '';
+$scriptName = $_SERVER['SCRIPT_NAME'] ?? '';
+$phpSelf = $_SERVER['PHP_SELF'] ?? '';
+$remoteAddr = $_SERVER['REMOTE_ADDR'] ?? '';
+$connection = $_SERVER['HTTP_CONNECTION'] ?? '';
+$host = $_SERVER['HTTP_HOST'] ?? '';
+$referer = $_SERVER['HTTP_REFERER'] ?? '';
+$userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+$queryString = $_SERVER['QUERY_STRING'] ?? '';
+$requestUri = $_SERVER['REQUEST_URI'] ?? '';
 
 ?>
 
@@ -31,6 +31,9 @@ $requestUri = '';
 </head>
 
 <body class="bg-gray-100">
+  <!-- <form action="" method="post">
+    <input type="submit" value="Submit">
+  </form> -->
   <div class="container mx-auto p-8 bg-white shadow-md mt-10 rounded-lg">
     <h1 class="text-3xl font-semibold mb-4 text-center">Server Information</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
