@@ -1,3 +1,26 @@
+<?php
+ putenv('DB_HOST=localhost');
+ putenv('DB_USER=root');
+
+ $host = getenv('DB_HOST');
+ $db_user = getenv('DB_USER');
+
+//  var_dump(getenv());
+
+//  echo getenv('HOME');
+
+ $foo = 'foo global';
+
+ function test() {
+  $foo = 'foo local';
+
+  echo 'GLOBAL varaible: ' . $GLOBALS['foo'];
+  echo "<br>";
+  echo 'local varaible: ' . $foo;
+ }
+
+ test();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,11 +37,11 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
       <div class="bg-gray-200 p-4 rounded-lg">
-        <strong class="block mb-2">DB Host:</strong>
+        <strong class="block mb-2">DB Host: <?= $host ?></strong>
 
       </div>
       <div class="bg-gray-200 p-4 rounded-lg">
-        <strong class="block mb-2">DB User:</strong>
+        <strong class="block mb-2">DB User: <?= $db_user ?></strong>
 
       </div>
 
