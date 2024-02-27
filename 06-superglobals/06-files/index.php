@@ -7,6 +7,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
   $title = htmlspecialchars($_POST['title'] ?? '');
   $description = htmlspecialchars($_POST['description'] ?? '');
 
+  $file = $_FILES['logo'];
+
+  // check file type 
+  $allowed_ext = ['png', 'jpg', 'jpeg'];
+  
+
+  if($file['error'] === UPLOAD_ERR_OK) {
+    $uploadDir = 'uploads/';
+
+    // check and create dir
+    if(!is_dir($uploadDir)) {
+      mkdir($uploadDir, 0755, true);
+    }
+
+    // create a unique file name
+    $filename = uniqid() . '-' . $file['name'];
+    $fileExtension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+    if(in_array($fileExtension, $allowed_ext)) {
+      // upload file 
+      if(move_uploaded_file($file['tmp_name'], $uploadDir . $filename)) {
+        echo "FILE uploaded";
+      } else {
+        echo "File upload error" . $file['error'];
+      }
+    } else {
+      echo "Only png, jpg, jpeg are allowed";
+    }
+
+    
+  }
+
   $submitted = true;
 }
 ?>
