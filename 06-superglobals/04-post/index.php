@@ -1,8 +1,13 @@
 <?php
+$submitted = false;
  if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-  $title = $_POST['title'];
-  $desc = $_POST['description'];
+  $title = htmlspecialchars($_POST['title']) ?? '';
+  $desc = htmlspecialchars($_POST['description']) ?? ''; 
+
   
+  if(!empty($title) && !empty($desc)) {
+    $submitted = true;
+  }
  }
 ?>
 <!DOCTYPE html>
@@ -35,6 +40,20 @@
           <a href="#" class="text-blue-500 hover:underline">Back to Listings</a>
         </div>
       </form>
+
+      <?php if($submitted) : ?>
+      <div class="mt-6 p-4 border rounded bg-grey-200">
+        <h2 class="text-lg font-semibold">Submitted Job Listing: </h2>
+        <p>
+          <strong>Title:</strong>
+          <?= $title ?? null ?>
+        </p>
+        <p>
+          <strong>Description: </strong>
+          <?= $desc ?? null ?>
+        </p>
+      </div>
+      <?php endif; ?>
 
       <!-- Display submitted data -->
     </div>
