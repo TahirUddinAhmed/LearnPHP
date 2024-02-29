@@ -1,3 +1,6 @@
+<?php
+ setcookie('username', 'tahir12', time() + 3600, '/');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
