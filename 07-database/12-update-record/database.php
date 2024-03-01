@@ -3,7 +3,7 @@
 // Database configuration
 $host = 'localhost';
 $port = 3306;
-$dbName = 'blog';
+$dbName = 'learnphp';
 $username = 'root';
 $password = '';
 
