@@ -46,3 +46,6 @@ $user01 = new User("tahirahemd", "01tahirahemd@gmail.com");
 $user01->login();
 >
 ```
+
+# Desturctor 
+A destructor in PHP is a special method within a class that is automatically called when an object of that class is destroyed. It allows you to perform any cleanup tasks such as closing database connections, releasing resoures or writing log files before the object is removed from memory. 
