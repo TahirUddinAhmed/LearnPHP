@@ -43,6 +43,9 @@ $posts = $stmt->fetchAll();
     <div class="mt-6">
       <a href="create.php" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none">Create Post</a>
     </div>
+    <div class="mt-6">
+      <a href="user_data.php" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 focus:outline-none">User Info</a>
+    </div>
   </div>
 </body>
 
