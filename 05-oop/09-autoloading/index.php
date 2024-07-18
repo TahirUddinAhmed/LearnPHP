@@ -14,3 +14,7 @@ $person02->getPerson();
 
 $car->getCar();
 echo "Area of circle " . $cirlce01->area();
+echo "<br>";
+
+$greetings = new Greetings("Tahir Uddin Ahmed");
+$greetings->greet();
