@@ -10,3 +10,9 @@ function redirect($url) {
     header("Location: {$url}");
     exit();
 }
+
+function inspect($value) {
+  echo "<pre>";
+  var_dump($value);
+  echo "</pre>
+}
