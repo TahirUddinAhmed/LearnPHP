@@ -61,3 +61,36 @@ What if you didn’t assign the anonymous function to a variable? How would you 
    2. Functionality:
      - Your anonymous function doubles each value in the array, and the result is correctly returned and printed. 
 </details>
+
+# Closures
+Closures in PHP are anonymous functions that can capture variables from their surrounding scope. This feature allows closures to maintain state and access variables even after their parent function has finished executing.
+
+## Key features of Closures 
+ - <b>Anonymous Functions</b>: Closures do not have a name and are defined inline. 
+ - <b>Variable Capture</b>: They can access variable from the scope in which they are defined, using the `use` kyeowrd. 
+ - <b>First-Class Function</b>: Closures can be assigned to variables, passed as arguments, or returned from other functions,. 
+
+### Syntax Overview 
+The basic syntax for defining a closure in PHP is as followsL: 
+```php
+$myClosure = function ($param1, $param2) use ($externalVariable) {
+  // function body
+}
+```
+
+### example 
+
+```php
+$counter = 1; 
+
+// get the $counter as reference 
+$multiply = function() use (&$counter) {
+    $counter *= 2;
+};
+
+$multiply();
+echo $counter; // output: 2
+echo "<br>";
+$multiply();
+echo $counter; // output: 4
+```
