@@ -1,0 +1,1 @@
+File handling in PHP allows you to create, read, write, and delete files. It is essential for managing data storage efficiently.
